@@ -1,0 +1,11 @@
+
+{
+    "type": "mssql",
+    "host": "localhost",
+    "port": 1433,
+    "username": "sa",
+    "password": "Password01.",
+    "database": "StudentModel",
+    "entities": ["dist/model/**/*.js"],
+    "syncronize" : true
+ }
