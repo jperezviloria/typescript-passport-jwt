@@ -29,5 +29,5 @@ app.get("/", (req, res) => {
     res.send(`The API is at http://localhost:${app.get('port')}`);
 });
 app.use("/auth", auth_routes_1.default);
-app.use("/user", private_routes_1.default);
+app.use("/user", passport_1.default.authenticate('jwt', { session: false }), private_routes_1.default);
 exports.default = app;

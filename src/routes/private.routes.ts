@@ -3,10 +3,10 @@ import {getAllUsersController} from "../controller/userController"
 
 const router = Router();
 
-import passport from "passport";
 
+router.route("/")
+.get(getAllUsersController)
 
-router.get("/",passport.authenticate('jwt',{session:false}) ,getAllUsersController)
 
 
 

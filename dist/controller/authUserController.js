@@ -22,7 +22,7 @@ const MESSAGE_USER_EXIST = "The User already exist";
 const MESSAGE_USER_DONT_EXIST = "The User doesn`t exist";
 const MESSAGE_USER_SAVED = "The User was saved successfully";
 const MESSAGE_CREATED_TOKEN = "Token created";
-const MESSAGE_PASSWORD_WRONG = "The Password does is wrong";
+const MESSAGE_EMAIL_OR_PASSWORD_WRONG = "The Email or Password are wrong";
 const createToken = (user) => {
     return jsonwebtoken_1.default.sign({
         id: user.idUser,
@@ -81,17 +81,18 @@ const signIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(JSON.stringify(passwordUserByEmail));
     console.log(JSON.stringify(user.passwordUser));
     const isMatch = yield comparePassword(user.passwordUser, passwordUserByEmail);
+    const userToAuthenticate = yield userDatabase_1.getUserByEmail(user.emailUser);
     console.log(isMatch);
     if (isMatch) {
         return res.json({
             "status": 200,
             "message": MESSAGE_CREATED_TOKEN,
-            "token": exports.createToken(user)
+            "token": exports.createToken(userToAuthenticate)
         });
     }
     return res.json({
         "status": 400,
-        "message": MESSAGE_PASSWORD_WRONG
+        "message": MESSAGE_EMAIL_OR_PASSWORD_WRONG
     });
 });
 exports.signIn = signIn;

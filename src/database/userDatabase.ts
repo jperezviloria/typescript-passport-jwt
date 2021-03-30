@@ -14,7 +14,7 @@ export const getUserById = async(idUser: string):Promise<Response> =>{
     return user[0]
 }
 
-export const getUserByEmail = async(emailUser: string):Promise<Response> =>{
+export const getUserByEmail = async(emailUser: string):Promise<IUser> =>{
     const user = await getRepository(Users).query(`SELECT * FROM Users WHERE emailUser = @0`, [emailUser])
     return user[0]
 }

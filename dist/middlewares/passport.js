@@ -22,6 +22,11 @@ const opts = {
 exports.default = new passport_jwt_1.Strategy(opts, (payload, done) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = yield userDatabase_1.getUserById(payload.id);
+        console.log("aqui");
+        console.log(payload);
+        console.log(payload.id);
+        console.log(payload.email);
+        console.log(user);
         if (user) {
             return done(null, user);
         }

@@ -12,6 +12,11 @@ const opts: StrategyOptions ={
 export default new Strategy(opts, async(payload, done) =>{
     try {
         const user = await getUserById(payload.id)
+        console.log("aqui")
+        console.log(payload)
+        console.log(payload.id)
+        console.log(payload.email)
+        console.log(user)
         if(user){
             return  done(null, user);
         }

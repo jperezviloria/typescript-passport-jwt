@@ -32,7 +32,7 @@ app.get("/", (req, res) =>{
     res.send(`The API is at http://localhost:${app.get('port')}`)
 })
 app.use("/auth", authRoutes)
-app.use("/user", userRoutes)
+app.use("/user", passport.authenticate('jwt',{session:false}),userRoutes)
 
 
 export default app ;

@@ -11,7 +11,7 @@ const MESSAGE_USER_EXIST: string = "The User already exist"
 const MESSAGE_USER_DONT_EXIST: string = "The User doesn`t exist"
 const MESSAGE_USER_SAVED: string = "The User was saved successfully"
 const MESSAGE_CREATED_TOKEN: string = "Token created"
-const MESSAGE_PASSWORD_WRONG: string = "The Password does is wrong"
+const MESSAGE_EMAIL_OR_PASSWORD_WRONG: string = "The Email or Password are wrong"
 
 
 
@@ -82,18 +82,19 @@ export const signIn = async (req: Request, res: Response) =>{
 
     
     const isMatch = await comparePassword(user.passwordUser, passwordUserByEmail)
+    const userToAuthenticate = await getUserByEmail(user.emailUser);
     console.log(isMatch)
     if(isMatch){
         return res.json({
             "status":200,
             "message":MESSAGE_CREATED_TOKEN,
-            "token": createToken(user)
+            "token": createToken(userToAuthenticate)
         })  
     }
 
     return res.json({
         "status":400,
-        "message":MESSAGE_PASSWORD_WRONG
+        "message":MESSAGE_EMAIL_OR_PASSWORD_WRONG
     }) 
 
 }
