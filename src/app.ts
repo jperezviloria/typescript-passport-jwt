@@ -9,6 +9,7 @@ import passportMiddleware from "./middlewares/passport"
 
 import authRoutes from "./routes/auth.routes"
 import userRoutes from "./routes/private.routes"
+import publicRoutes from "./routes/public.routes"
 
 //initialization
 const app = express();
@@ -16,7 +17,7 @@ createConnection()
 
 
 //settings
-app.set('port', process.env.PORT || 3000)
+app.set('port', process.env.PORT || 3001)
 
 
 //middlewares
@@ -33,6 +34,7 @@ app.get("/", (req, res) =>{
 })
 app.use("/auth", authRoutes)
 app.use("/user", passport.authenticate('jwt',{session:false}),userRoutes)
+app.use("/publicuser", publicRoutes)
 
 
 export default app ;

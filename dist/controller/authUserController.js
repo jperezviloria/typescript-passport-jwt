@@ -87,7 +87,8 @@ const signIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return res.json({
             "status": 200,
             "message": MESSAGE_CREATED_TOKEN,
-            "token": exports.createToken(userToAuthenticate)
+            "token": exports.createToken(userToAuthenticate),
+            "user": userToAuthenticate
         });
     }
     return res.json({

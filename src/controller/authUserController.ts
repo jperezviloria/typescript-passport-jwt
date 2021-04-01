@@ -88,7 +88,8 @@ export const signIn = async (req: Request, res: Response) =>{
         return res.json({
             "status":200,
             "message":MESSAGE_CREATED_TOKEN,
-            "token": createToken(userToAuthenticate)
+            "token": createToken(userToAuthenticate),
+            "user":userToAuthenticate
         })  
     }
 
