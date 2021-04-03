@@ -19,6 +19,11 @@ export const getUserByEmail = async(emailUser: string):Promise<IUser> =>{
     return user[0]
 }
 
+export const getUsersByLevel = async(idLevel: number):Promise<IUser[]> =>{
+    const user = await getRepository(Users).query(`SELECT * FROM Users WHERE level = @0`, [idLevel])
+    return user
+}
+
 export const getEmailUserByEmail = async(emailUser: string) =>{
     try{
         const user = await getRepository(Users).query(`SELECT emailUser FROM Users WHERE emailUser = @0`, [emailUser])

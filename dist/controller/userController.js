@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllUsersController = void 0;
+exports.getAllUsersByLevelController = exports.getAllUsersController = void 0;
 const userDatabase_1 = require("../database/userDatabase");
 const getAllUsersController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const allUsers = yield userDatabase_1.getAllUsers();
@@ -19,3 +19,12 @@ const getAllUsersController = (req, res) => __awaiter(void 0, void 0, void 0, fu
     });
 });
 exports.getAllUsersController = getAllUsersController;
+const getAllUsersByLevelController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const levelID = req.params.id;
+    const usersByLevel = yield userDatabase_1.getUsersByLevel(parseInt(levelID));
+    return res.json({
+        "status": 200,
+        "data": usersByLevel
+    });
+});
+exports.getAllUsersByLevelController = getAllUsersByLevelController;
