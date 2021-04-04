@@ -1,6 +1,6 @@
 import {Request, Response} from "express"
 import {Users, IUser} from "../model/user"
-import {getUserByEmail, getAllUsers, getUsersByLevel} from "../database/userDatabase"
+import {getUserByEmail, getAllUsers, getUsersByLevel, getUserFiltered} from "../database/userDatabase"
 import {getRepository} from "typeorm"
 
 
@@ -18,6 +18,15 @@ export const getAllUsersByLevelController = async(req: Request, res: Response): 
     return res.json({
         "status": 200,
         "data": usersByLevel
+    })
+}
+
+export const getUsersFiltered = async(req: Request, res: Response): Promise<Response> =>{
+   
+    const usersFiltered = await getUserFiltered(req.body.emailUser, req.body.level,req.body.rol)
+    return res.json({
+        "status": 200,
+        "data": usersFiltered
     })
 }
 

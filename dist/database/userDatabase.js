@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.saveUser = exports.getPasswordUserByEmail = exports.getEmailUserByEmail = exports.getUsersByLevel = exports.getUserByEmail = exports.getUserById = exports.getAllUsers = void 0;
+exports.saveUser = exports.getPasswordUserByEmail = exports.getEmailUserByEmail = exports.getUsersByLevel = exports.getUserByEmail = exports.getUserById = exports.getUserFiltered = exports.getAllUsers = void 0;
 const typeorm_1 = require("typeorm");
 const user_1 = require("../model/user");
 const getAllUsers = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -18,6 +18,14 @@ const getAllUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     return allUsers;
 });
 exports.getAllUsers = getAllUsers;
+const getUserFiltered = (email, level, rol) => __awaiter(void 0, void 0, void 0, function* () {
+    const usersFiltered = yield typeorm_1.getRepository(user_1.Users).query(`EXEC GetFilteredUser @emailUser = @0,@levelUser = @1,@rol = @2`, [email,
+        level,
+        rol]);
+    console.log(usersFiltered);
+    return usersFiltered;
+});
+exports.getUserFiltered = getUserFiltered;
 const getUserById = (idUser) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield typeorm_1.getRepository(user_1.Users).query(`SELECT * FROM Users WHERE idUser = @0`, [idUser]);
     return user[0];

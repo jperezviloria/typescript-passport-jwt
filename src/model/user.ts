@@ -12,12 +12,20 @@ export class Users{
 
     @Column()
     passwordUser : string;
+
+    @Column()
+    levelUser : number;
+
+    @Column()
+    rolUser : string;
 }
 
 
 export interface IUser {
     idUser ?: number;
-    emailUser :string;
-    passwordUser : string
+    emailUser ?:string;
+    passwordUser ?: string;
+    levelUser ?: number;
+    rolUser ?: string;
 
 }

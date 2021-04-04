@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllUsersByLevelController = exports.getAllUsersController = void 0;
+exports.getUsersFiltered = exports.getAllUsersByLevelController = exports.getAllUsersController = void 0;
 const userDatabase_1 = require("../database/userDatabase");
 const getAllUsersController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const allUsers = yield userDatabase_1.getAllUsers();
@@ -28,3 +28,16 @@ const getAllUsersByLevelController = (req, res) => __awaiter(void 0, void 0, voi
     });
 });
 exports.getAllUsersByLevelController = getAllUsersByLevelController;
+const getUsersFiltered = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var user = {
+        emailUser: req.body.emailUser,
+        levelUser: req.body.level,
+        rolUser: req.body.rol,
+    };
+    const usersFiltered = yield userDatabase_1.getUserFiltered(req.body.emailUser, req.body.level, req.body.rol);
+    return res.json({
+        "status": 200,
+        "data": usersFiltered
+    });
+});
+exports.getUsersFiltered = getUsersFiltered;

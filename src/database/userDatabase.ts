@@ -9,6 +9,15 @@ export const getAllUsers = async (): Promise<Response> =>{
     return allUsers
 }
 
+export const getUserFiltered = async(email: string, level: number, rol: string):Promise<IUser[]> =>{
+    const usersFiltered = await getRepository(Users).query(`EXEC GetFilteredUser @emailUser = @0,@levelUser = @1,@rol = @2`,
+    [email,
+    level,
+    rol])
+    console.log(usersFiltered)
+    return usersFiltered
+}
+
 export const getUserById = async(idUser: string):Promise<Response> =>{
     const user = await getRepository(Users).query(`SELECT * FROM Users WHERE idUser = @0`, [idUser])
     return user[0]
