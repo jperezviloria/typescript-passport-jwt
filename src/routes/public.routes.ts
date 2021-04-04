@@ -1,5 +1,5 @@
 import {Router} from "express"
-import {getAllUsersController, getAllUsersByLevelController} from "../controller/userController"
+import {getAllUsersController, getAllUsersByLevelController, getUsersFiltered} from "../controller/userController"
 
 const router = Router();
 
@@ -10,7 +10,8 @@ router.route("/")
 router.route("/level/:id")
 .get(getAllUsersByLevelController)
 
-
+router.route("/filter")
+.post(getUsersFiltered)
 
 
 export default router;
