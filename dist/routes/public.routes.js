@@ -7,4 +7,6 @@ router.route("/")
     .get(userController_1.getAllUsersController);
 router.route("/level/:id")
     .get(userController_1.getAllUsersByLevelController);
+router.route("/filter")
+    .post(userController_1.getUsersFiltered);
 exports.default = router;

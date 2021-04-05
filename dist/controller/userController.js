@@ -29,12 +29,18 @@ const getAllUsersByLevelController = (req, res) => __awaiter(void 0, void 0, voi
 });
 exports.getAllUsersByLevelController = getAllUsersByLevelController;
 const getUsersFiltered = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var user = {
+    const users = {
         emailUser: req.body.emailUser,
-        levelUser: req.body.level,
-        rolUser: req.body.rol,
+        levelUser: req.body.levelUser,
+        rolUser: req.body.rolUser,
     };
-    const usersFiltered = yield userDatabase_1.getUserFiltered(req.body.emailUser, req.body.level, req.body.rol);
+    // const email = req.body.emailUser;
+    // const level = req.body.levelUser;
+    // const rol = req.body.rolUser;
+    console.log(users.emailUser);
+    console.log(users.levelUser);
+    console.log(users.rolUser);
+    const usersFiltered = yield userDatabase_1.getUserFiltered(users.emailUser, users.levelUser, users.rolUser);
     return res.json({
         "status": 200,
         "data": usersFiltered

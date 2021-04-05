@@ -29,3 +29,11 @@ export interface IUser {
     rolUser ?: string;
 
 }
+
+export interface IUserFilter {
+    emailUser :string;
+    levelUser : number;
+    rolUser : string;
+
+
+}
