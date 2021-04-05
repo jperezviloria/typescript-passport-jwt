@@ -6,7 +6,7 @@ import config from "../config/config";
 import {Users, IUser} from "../model/user"
 import {getUserByEmail, saveUser, getEmailUserByEmail, getPasswordUserByEmail} from "../database/userDatabase"
 
-const MESSAGE_SEND_COMPLETE_INFO: string = "Please. Send email and password"
+const MESSAGE_SEND_COMPLETE_INFO: string = "Please. Send email, password, level and rol"
 const MESSAGE_USER_EXIST: string = "The User already exist"
 const MESSAGE_USER_DONT_EXIST: string = "The User doesn`t exist"
 const MESSAGE_USER_SAVED: string = "The User was saved successfully"
@@ -29,10 +29,12 @@ export const signUp = async(req: Request, res: Response):Promise<Response> =>{
     
     var user: IUser = {
         emailUser: req.body.emailUser,
-        passwordUser: req.body.passwordUser 
+        passwordUser: req.body.passwordUser,
+        levelUser: req.body.levelUser,
+        rolUser: req.body.rolUser, 
     }
     
-    if(!user.emailUser || !user.passwordUser){
+    if(!user.emailUser || !user.passwordUser || !user.levelUser || !user.rolUser){
         return res.json({
             "status":400,
             "message": MESSAGE_SEND_COMPLETE_INFO

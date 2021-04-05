@@ -17,7 +17,7 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const config_1 = __importDefault(require("../config/config"));
 const userDatabase_1 = require("../database/userDatabase");
-const MESSAGE_SEND_COMPLETE_INFO = "Please. Send email and password";
+const MESSAGE_SEND_COMPLETE_INFO = "Please. Send email, password, level and rol";
 const MESSAGE_USER_EXIST = "The User already exist";
 const MESSAGE_USER_DONT_EXIST = "The User doesn`t exist";
 const MESSAGE_USER_SAVED = "The User was saved successfully";
@@ -35,9 +35,11 @@ exports.createToken = createToken;
 const signUp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var user = {
         emailUser: req.body.emailUser,
-        passwordUser: req.body.passwordUser
+        passwordUser: req.body.passwordUser,
+        levelUser: req.body.levelUser,
+        rolUser: req.body.rolUser,
     };
-    if (!user.emailUser || !user.passwordUser) {
+    if (!user.emailUser || !user.passwordUser || !user.levelUser || !user.rolUser) {
         return res.json({
             "status": 400,
             "message": MESSAGE_SEND_COMPLETE_INFO

@@ -63,7 +63,7 @@ const getPasswordUserByEmail = (emailUser) => __awaiter(void 0, void 0, void 0, 
 exports.getPasswordUserByEmail = getPasswordUserByEmail;
 const saveUser = (user, passwordEncripted) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const newUser = yield typeorm_1.getRepository(user_1.Users).query(`INSERT INTO Users(emailUser, passwordUser) VALUES(@0, @1)`, [user.emailUser, passwordEncripted]);
+        const newUser = yield typeorm_1.getRepository(user_1.Users).query(`INSERT INTO Users(emailUser, passwordUser, rol, level) VALUES ( @0, @1,@2,@3);`, [user.emailUser, passwordEncripted, user.rolUser, user.levelUser]);
         return "saved";
     }
     catch (error) {

@@ -52,7 +52,7 @@ export const getPasswordUserByEmail = async(emailUser: string)=>{
 
 export const saveUser = async(user: IUser, passwordEncripted:any) =>{
     try{
-        const newUser = await getRepository(Users).query(`INSERT INTO Users(emailUser, passwordUser) VALUES(@0, @1)`, [user.emailUser, passwordEncripted])
+        const newUser = await getRepository(Users).query(`INSERT INTO Users(emailUser, passwordUser, rol, level) VALUES ( @0, @1,@2,@3);`, [user.emailUser, passwordEncripted, user.rolUser, user.levelUser])
         return "saved"
     }catch(error){
         return "no saved"
