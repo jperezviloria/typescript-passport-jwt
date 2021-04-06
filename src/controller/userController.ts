@@ -41,3 +41,8 @@ export const getUsersFiltered = async(req: Request, res: Response) =>{
     })
 }
 
+export const saveImage = async(req: Request, res: Response) =>{
+    console.log(req.body);
+    
+}
+

@@ -9,4 +9,6 @@ router.route("/level/:id")
     .get(userController_1.getAllUsersByLevelController);
 router.route("/filter")
     .post(userController_1.getUsersFiltered);
+router.route("/images/add")
+    .post(userController_1.saveImage);
 exports.default = router;

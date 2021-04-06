@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUsersFiltered = exports.getAllUsersByLevelController = exports.getAllUsersController = void 0;
+exports.saveImage = exports.getUsersFiltered = exports.getAllUsersByLevelController = exports.getAllUsersController = void 0;
 const userDatabase_1 = require("../database/userDatabase");
 const getAllUsersController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const allUsers = yield userDatabase_1.getAllUsers();
@@ -47,3 +47,7 @@ const getUsersFiltered = (req, res) => __awaiter(void 0, void 0, void 0, functio
     });
 });
 exports.getUsersFiltered = getUsersFiltered;
+const saveImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.body);
+});
+exports.saveImage = saveImage;

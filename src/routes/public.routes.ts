@@ -1,5 +1,5 @@
 import {Router} from "express"
-import {getAllUsersController, getAllUsersByLevelController, getUsersFiltered} from "../controller/userController"
+import {getAllUsersController, getAllUsersByLevelController, getUsersFiltered, saveImage} from "../controller/userController"
 
 const router = Router();
 
@@ -12,6 +12,9 @@ router.route("/level/:id")
 
 router.route("/filter")
 .post(getUsersFiltered)
+
+router.route("/images/add")
+.post(saveImage)
 
 
 export default router;
